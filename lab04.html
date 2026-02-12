@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Project | Graham Gobbel</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="lab02.html">Lab 2: AI Evaluation</a>
+            <a href="lab03.html">Lab 3: Visualization Critique</a>
+            <a href="lab04.html" class="active">Portfolio Project</a>
+        </nav>
+        <h1>Portfolio Project</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>This project demonstrates my data visualization skills using Tableau. Below you'll find an interactive visualization using a dataset including Amazon e-commerce information from Kaggle, 
+                followed by my reflection on the process.</p>
+        </section>
+
+        <section>
+            <h2>Tableau Visualization</h2>
+            <div class="tableau-container">
+                <div class='tableauPlaceholder' id='viz1770843776655' style='position: relative'>
+                    <noscript>
+                        <a href='#'>
+                            <img alt='Dashboard 1' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Am&#47;Amazon_Data_17708434061690&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+                        </a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='Amazon_Data_17708434061690&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Am&#47;Amazon_Data_17708434061690&#47;Dashboard1&#47;1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                        <param name='filter' value='publish=yes' />
+                    </object>
+                </div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1770843776655');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    if (divElement.offsetWidth > 800) {
+                        vizElement.style.minWidth='420px';
+                        vizElement.style.maxWidth='100%';
+                        vizElement.style.minHeight='587px';
+                        vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';
+                    } else if (divElement.offsetWidth > 500) {
+                        vizElement.style.minWidth='420px';
+                        vizElement.style.maxWidth='100%';
+                        vizElement.style.minHeight='587px';
+                        vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';
+                    } else {
+                        vizElement.style.width='100%';
+                        vizElement.style.height='977px';
+                    }
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
+            </div>
+        </section>
+
+        <section>
+            <h2>Reflection & Analysis</h2>
+            
+            <h3>Data Preparation</h3>
+            <p>
+                The data set I chose to use was extracted from a Kaggle dataset about e-commerce sales. 
+                As a frequent Amazon shopper and someone interested in consumer behavior, I felt particulary 
+                drawn to this data set. Thankfully  the data was already clean and only required a simple csv download
+                to my laptop. I then uploaded the csv file to Tableau Public and was able to start creating visualizations right away.
+            <h3>Design Choices</h3>
+            <p>
+                In Tableau, I created 5 different sheets including Total Revenue, Revenue by Category,
+                Revenue by Region, Rating vs Revenue, and Trend (of revenue over time). One dissapointment and
+                challenge I encountered was that I was not able to create a map visualization with the data by Region
+                , which is something I wanted to include in my dashboard. After some frustrating trial and error, I learned
+                that a map was not possible because the data was formatted by continent rather than country, which is the 
+                level of geographic detail Tableau requires for mapping. I could have manually edited the data and chosen to use the biggest 
+                country in each respective continent to represent the region, but I knew that would be misleading and innacurate,
+                so I decided to just use a bar chart instead to show the revenue by region. For the overall dashboard design,
+                I choose to keep things simple wih a clean white background, a consistent blue color scheme, and a neat font. 
+            </p>
+
+            <h3>Expected Patterns</h3>
+            <p>
+                I had a few initial thoughts before analyzing this data. First, I assumed that revenue would peak in December due to Christmas
+                and the holiday season. My second assumption is that Home & Kitchen category would generate the most revenue. My thought process
+                behind this is that items in this category are just past the convenience point of purchasing in store, and can also be bulky and more expensive,
+                driving more people to buy online rather, especially on Amazon where they can get them almost as quickly as going to the store.
+                Lastly, I expected that the North American region would generate the most revenue, as Amazon is based in the US and has a very
+                strong presence here.</strong> 
+            </p>
+
+            <h3>Surprises/Outliers</h3>
+            <p>
+                Very surprisingly, I was incorrect about all of my initial assumptions. First, the data showed that the revenue actually peaked
+                in summer months such as May and August, rather than December. I was surprised by this, but I think it could be explained by the fact 
+                that people are more likely to shop online during the summer when they are busy and on the go, and also because of back to school shopping in August. 
+                Nest, Home & Kitchen was third in Revenue by Category, with beauty products taking the lead. As someone who does not normally buy beauty products such as
+                makeup and skincare online, I was surprised by this because I would have thought that people would want to see and try these products in person before buying.
+                However, I think this could be explained by a few different factors. One explanation could be that customers are already familiar with the product they want
+                and are not looking to try something new, so they are comfortable buying online, and might be getting a better deal by doing so.
+                The last surprise was that the Middle East just barely edged out North America in Revenue by Region. I was really surprised by this because 
+                I did not know that Amazon had such a strong presence there, but after doing a little bit of research I learned that Amazon has been rapidly 
+                expanding in the Middle East and has become the largest e-commerce retailer in the region.
+            <h3>Questions for Further Investigation</h3>
+            <p>
+                The following are some questions I have after analyzing the "surprises" in the data:
+                <ul>
+                    <li>What are the specific products that are driving the high revenue in the beauty category? Makeup? Skincare? Shower products?</li>
+                    <li>What are the most frequently purchased items in the summer months?</li>
+                    <li>What are the specific factors that are driving the high revenue in the Middle East region? How much of
+                        that revenue is coming from specific countries?
+                    <li>Does back-to-school shopping bring in more revenue than other seasonal events?</li>
+                    <li>What products are bought frequently in other areas of the world that not bought in the US?</li>
+                    </li>
+
+            </p>
+            <h3>Tool Evaluation</h3>
+            <p>As a business student, I have for the most part enjoyed using Tableau for my work over the past 
+                few years. I think it is great for beginners and for creating quick visualizations to get points across.
+                I also like how you can make a visualization as simple or detailed as you want, and how you can easily connect to different
+                data sources. Although I have not encountered many issues with Tableau, I can think of a couple.
+                Specifically in this project, I was frustrated by the fact that I could not create a map visualization with the data I had, 
+                and I wish there was a way to work around that. Also, for beginners, and people like me who are coming back after not using it for a while,
+                it can be a little bit overwhelming at first with all of the different options and features, and I think it could be helpful
+                if there was a more guided way to learn the tool. However, with practice and exploration, I have found that Tableau is a very user-friendly
+                 platform for data visualization, and I look forward to using it more in the future.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Graham Gobbel | DCDA 40833 Skills Portfolio</p>
+    </footer>
+</body>
+</html>

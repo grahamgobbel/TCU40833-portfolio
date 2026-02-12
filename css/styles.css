@@ -184,6 +184,21 @@ main section li {
     margin: 2rem 0;
 }
 
+/* Tableau container - make it wider/full-width */
+.tableau-container {
+    width: 100%;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+/* Override main width for section containing Tableau */
+main section:has(.tableau-container) {
+    max-width: 100%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* =========================
    Code Blocks
    ========================= */

@@ -15,7 +15,22 @@
     --bg-color: #f4f4f4;           /* Light background */
     --white: #ffffff;
 }
+/*adding dark mode here for lab5. I understand that the color structure
+is similar to above, but just has different colors for the dark mode.
+/* Dark Mode Color Scheme */
 
+/*came back and changed the colors that the AI had originally
+suggested to be more in line with the original color scheme but just lighter/darker 
+versions of the colors. I also changed the text colors to be more readable on a dark background.*/
+body.dark-mode {
+    --primary-color: #2b446f;      /* Lighter purple for dark mode */
+    --secondary-color: #4e80c1;    /* Lighter gray */
+    --accent-color: #60a5fa;       /* Brighter blue */
+    --text-color: #093a7a;         /* Light gray text */
+    --text-secondary: #285593;     /* Medium gray */
+    --bg-color: #0f172a;           /* Dark navy background */
+    --white: #1e293b;              /* Dark surface color */
+}
 /* =========================
    Basic Reset & Typography
    ========================= */
@@ -74,7 +89,7 @@ nav {
 /* Style the navigation list */
 nav ul {
     list-style: none;           /* Remove bullets */
-    padding: 0;                 /* Remove default padding */
+    padding: 0 7rem;            /* Add padding to avoid overlapping with side buttons */
     margin: 0;                  /* Remove default margin */
     display: flex;              /* Arrange items horizontally */
     flex-direction: row;        /* Explicit: horizontal on desktop */
@@ -134,6 +149,45 @@ nav a:hover {
 
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
+}
+
+
+/* =========================
+   Dark Mode Toggle Button
+   ========================= */
+.dark-mode-toggle {
+    background: none;
+    border: 2px solid white; /* I know this is for thickness */
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem 1rem; /*adds space insdiet eh botton*/
+    border-radius: 20px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease; /*dont completely understand this but it seems to make the button look nicer when hovered over -- lasts 3 seconds*/
+    position: absolute; /*had to look up  what absolute position means but it seems to be the best way to position the button in the top left corner without affecting the layout of the rest of the page*/
+    left: 1rem; /* 1 rem from the left side*/
+    top: 50%; /*moves it halfway down the container*/
+    transform: translateY(-50%);
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Adjust on mobile to avoid collision with hamburger */
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        left: 0.5rem;
+        top: 0.5rem;             /* Move to top instead of center */
+        transform: none;         /* Remove centering transform */
+    }
+    
+    .dark-mode-toggle:hover {
+        transform: scale(1.05);  /* Remove translateY from hover */
+    }
 }
 
 /* =========================
@@ -440,6 +494,8 @@ footer a:hover {
     /* Show hamburger button on mobile */
     .hamburger {
         display: block;
+        top: 0.5rem;             /* Match dark mode button height */
+        transform: none;         /* Remove centering transform */
     }
 
     /* Stack navigation vertically on mobile */
@@ -455,6 +511,7 @@ footer a:hover {
         overflow: hidden;
         transition: max-height 0.3s ease;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 0;              /* Reset padding on mobile */
     }
 
     /* Show menu when active */

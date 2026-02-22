@@ -9,8 +9,13 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Navigation: Links to all portfolio pages -->
     <nav>
+     <!-- Navigation: Links to all portfolio pages -->
+    <!-- Dark mode toggle button -->
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+    </button>
+ 
         <!-- Hamburger menu button (visible on mobile) -->
         <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
             <span></span>
@@ -136,6 +141,52 @@
      <!-- repo now added-->
     <!-- live site link: https://grahamgobbel.github.io/TCU40833-portfolio/-->
 
+   
+   
+   <!-- Dark Mode Toggle JavaScript -->\
+<!--I know this section below allows the user to click the dark mode toggle button and switch between light and dark mode.
+However, I am least familiar with javascript syntax and how it all works, so I don't completely
+understand everything about this code.-->
+
+<!-- here is my attempt to explain what is happening:
+ The website checks if the user choose dark mode before
+
+It looks in the browser’s memory for the answer, if the 
+answer is yes (dark mode):the page turns dark
+
+The button shows a ☀️ (because clicking it will go back to light).
+
+When you click the button, the website switches the theme and updates the button icon accordingly.
+
+After switcihing, it saves the user’s choice in the browser’s memory so it can remember it for next time.-->
+
+<script>
+    // Get the dark mode toggle button
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    
+    // Check if user previously selected dark mode
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';  // Sun icon for dark mode
+    }
+    
+    // Toggle dark mode when button is clicked
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        // Update icon and save preference
+        if (document.body.classList.contains('dark-mode')) {
+            themeIcon.textContent = '☀️';  // Show sun when dark
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeIcon.textContent = '🌙';  // Show moon when light
+            localStorage.setItem('theme', 'light');
+        }
+    });
+</script>
+   
     <!-- Hamburger Menu JavaScript -->
     <script>
         // Get the hamburger button and navigation menu

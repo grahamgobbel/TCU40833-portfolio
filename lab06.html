@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_43827b179b02bdccb7c584a2e5259d7e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map_43827b179b02bdccb7c584a2e5259d7e {
+                position: relative;
+                width: 100%;
+                height: 600px;
+                }
+            
+            main {
+                max-width: 900px;
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+            
+            main section {
+                background-color: white;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            main section h2 {
+                color: var(--primary-color);
+                border-bottom: 3px solid var(--secondary-color);
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+                font-size: 1.875rem;
+            }
+            
+            main section p {
+                margin-bottom: 1rem;
+                line-height: 1.8;
+            }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_43827b179b02bdccb7c584a2e5259d7e" ></div>
+        
+    <main>
+        <section>
+            <h2>Lab 6 Reflection</h2>
+            <p>
+                My design inspiration for this map was The Masters, specifically a beautiful image of the Augusta National golf course on an early spring day. To me, this represents home. The Masters is one of my favorite Georgia traditions and a place that I love to visit. In addition, my favorite season is spring, especially at home, and the picture of Augusta National that I referenced perfectly captured what I imagine when I think of spring at home. The greens of the course, combined with blooming pink and purple flowers and blue sky, created a calm and welcoming visual mood that I wanted my map to reflect. This led me to use a simple variety of colors from the image including greens, pinks, purples, and some blue. My goal was to create a map that felt clean, peaceful, and visually balanced, similar to the atmosphere of Augusta National itself.
+            </p>
+            <p>
+                An initial challenge I faced when designing the map at multiple scales was not being able to represent all of the colors that I wanted to. I wanted to create a visually appealing map without it feeling overwhelming. Eventually I realized that it was best to keep colors simple on a large scale then add more on the smaller scale. For example, when zoomed out, the map appears mostly green to maintain clarity, but when zoomed into a city, users can see a greater variety of pink and purple elements. This approach helped maintain readability while still reflecting the original design inspiration.
+            </p>
+            <p>
+                One technical challenge I encountered was adding icons to the map pins. Not only did I not know how to do it at first, but once I did, I still could not find all the icons that I would have liked due to limited options. At first, I did not even know how to implement them, and even after learning the process, I had a difficult time finding icons that matched my locations due to limited options. To overcome this, I used the AI chat feature in VS Code to help me understand where to implement the code for icons. I also used it to identify available icon options and determine which ones best matched my locations. This process helped me better understand both the coding structure and the design decisions involved in creating an interactive map.
+            </p>
+            <p>
+                Overall, this project helped me better understand how design inspiration, cartographic decision-making, and technical skills work together to create an interactive map that is both effective and visually appealing.
+            </p>
+            <h3>Design Inspiration</h3>
+            <img src="images/2023augustanational.jpg" alt="Augusta National Golf Course in Spring 2023" style="width: 100%; height: auto; border-radius: 8px; margin-top: 1rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: block;">
+            <p style="font-size: 0.9rem; color: var(--text-secondary); font-style: italic; margin-top: 0.5rem;">Augusta National Golf Course during the 2023 Masters Tournament</p>
+        </section>
+    </main>
+</body>
+<script>
+    
+    
+            var map_43827b179b02bdccb7c584a2e5259d7e = L.map(
+                "map_43827b179b02bdccb7c584a2e5259d7e",
+                {
+                    center: [32.49540053846154, -84.96205338461537],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e1e473fa29545350159366b59c263cc9 = L.tileLayer(
+                "https://api.mapbox.com/styles/v1/grahamgobbel/cmm0t56o8000001ql1i440xul/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZ3JhaGFtZ29iYmVsIiwiYSI6ImNtbHRtdHJoODAxdjQzZm9pbzk5YzEzY3QifQ.wJeHCKx6rQG4W2tdhi60mA",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Mapbox",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e1e473fa29545350159366b59c263cc9.addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var marker_d0f30666c2f2887709f225b2c8f2c88b = L.marker(
+                [32.480129, -84.96318],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_a69c50f75fa086b0857257ee97552ab5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6aff30e855b7a1fabd2cced1f816a109 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ab622589ba83daab99fcf4ce876cbda4 = $(`<div id="html_ab622589ba83daab99fcf4ce876cbda4" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Columbus High School"</h3>             <img src="https://imagescdn.homes.com/i2/EB5lpTBKd2E2o9WNqc1tCBc1f1yB46qu3W3SAlJKCN0/114/columbus-high-school-columbus-ga-primaryphoto.jpg?p=1" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> School             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 Columbus High School is my alma matar and is a highly regarded public magnet school known for strong academics and arts programs, usually ranking in the top 3 public schools in the state. Located only a 2 minute walk from my house, I have many fond memories here and can agree that it is the best high school in the city!             </p>         </div>         </div>`)[0];
+                popup_6aff30e855b7a1fabd2cced1f816a109.setContent(html_ab622589ba83daab99fcf4ce876cbda4);
+            
+        
+
+        marker_d0f30666c2f2887709f225b2c8f2c88b.bindPopup(popup_6aff30e855b7a1fabd2cced1f816a109)
+        ;
+
+        
+    
+    
+            marker_d0f30666c2f2887709f225b2c8f2c88b.bindTooltip(
+                `<div>
+                     "Columbus High School"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0f30666c2f2887709f225b2c8f2c88b.setIcon(icon_a69c50f75fa086b0857257ee97552ab5);
+            
+    
+            var marker_64de32b0a9fbef9b3a6a7d072c16ec4e = L.marker(
+                [32.489947, -84.931591],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_e3226fe0fd80657ef0e3da30575765d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51ae5f49516cbb77cf7cc110452976fe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_688e78a3d8adf8599d56a8288a4132e8 = $(`<div id="html_688e78a3d8adf8599d56a8288a4132e8" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"El Carrizo"</h3>             <img src="https://www.elcarrizocolumbusga.com/_next/image?url=%2Fimages%2Felcarrizo%2Frestaurant%2Fmacon.jpeg&w=3840&q=75 " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Restaurant              </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 Although it may seem like any other Mexican restaurant, El Carrizo is a longtime local favorite of many Columbus residents. Families will go here to enjoy a comfort meal or maybe even for a casual celebration. Regardless, you are bound to see someone you know, no matter the day or time. I highly recommend the beef tacos or quesadillas!             </p>         </div>         </div>`)[0];
+                popup_51ae5f49516cbb77cf7cc110452976fe.setContent(html_688e78a3d8adf8599d56a8288a4132e8);
+            
+        
+
+        marker_64de32b0a9fbef9b3a6a7d072c16ec4e.bindPopup(popup_51ae5f49516cbb77cf7cc110452976fe)
+        ;
+
+        
+    
+    
+            marker_64de32b0a9fbef9b3a6a7d072c16ec4e.bindTooltip(
+                `<div>
+                     "El Carrizo"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_64de32b0a9fbef9b3a6a7d072c16ec4e.setIcon(icon_e3226fe0fd80657ef0e3da30575765d6);
+            
+    
+            var marker_3ba7c243a45961855b866d231a0aa6cb = L.marker(
+                [32.465008, -84.99569],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_949660892802c5b952aade74691a5eda = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_537b5151ab31edb286913aeeb33b5d23 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_29680a41cbe6f02189933c92ce1b6d30 = $(`<div id="html_29680a41cbe6f02189933c92ce1b6d30" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Whitewater Express"</h3>             <img src="https://www.exploregeorgia.org/sites/default/files/2023-11/rafting-columbus-whitewater-express-bridge-credit-gcalebjones.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Activity             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 If you are up for an adventure, this is the place to go! This outfitter helps visitors experience Columbus’s biggest attraction: the Chattahoochee River’s world-class urban whitewater course. It represents the city’s transformation into an outdoor adventure destination.             </p>         </div>         </div>`)[0];
+                popup_537b5151ab31edb286913aeeb33b5d23.setContent(html_29680a41cbe6f02189933c92ce1b6d30);
+            
+        
+
+        marker_3ba7c243a45961855b866d231a0aa6cb.bindPopup(popup_537b5151ab31edb286913aeeb33b5d23)
+        ;
+
+        
+    
+    
+            marker_3ba7c243a45961855b866d231a0aa6cb.bindTooltip(
+                `<div>
+                     "Whitewater Express"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3ba7c243a45961855b866d231a0aa6cb.setIcon(icon_949660892802c5b952aade74691a5eda);
+            
+    
+            var marker_90064625a754955f829d99a02c10e8ab = L.marker(
+                [32.512292, -84.953383],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_0ca38900850c5a960ac520ec1d3d8c1e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "heart",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c01756e65b874cd23ace355d0bf99ee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_97b6c94baeb3818c14f56e415ecae3db = $(`<div id="html_97b6c94baeb3818c14f56e415ecae3db" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Art of Yoga"</h3>             <img src="https://www.artofyogacolumbusga.com/uploads/1/2/3/5/123568784/new-team-pic_orig.png " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Exercise             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 This yoga studio is a favorite of mine because of its welcoming and homey nature. Art of Yoga offers yoga classes focused on community, mindfulness, and balance. Come here to relax, rejuvinate, and get your sweat on!             </p>         </div>         </div>`)[0];
+                popup_4c01756e65b874cd23ace355d0bf99ee.setContent(html_97b6c94baeb3818c14f56e415ecae3db);
+            
+        
+
+        marker_90064625a754955f829d99a02c10e8ab.bindPopup(popup_4c01756e65b874cd23ace355d0bf99ee)
+        ;
+
+        
+    
+    
+            marker_90064625a754955f829d99a02c10e8ab.bindTooltip(
+                `<div>
+                     "Art of Yoga"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_90064625a754955f829d99a02c10e8ab.setIcon(icon_0ca38900850c5a960ac520ec1d3d8c1e);
+            
+    
+            var marker_e6590413d2a93ce87440752697efb1ca = L.marker(
+                [32.468919, -84.964137],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_6789a925faa4e45ad2d3bf4a0f64180b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_640d5731d37bdc11df666fed3801ae0c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c20e2b65d89d8ea07fbac2998d53733e = $(`<div id="html_c20e2b65d89d8ea07fbac2998d53733e" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Dinglewood Pharmacy"</h3>             <img src="https://marieletseat.com/wp-content/uploads/2010/09/106-dp-02.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Restaurant              </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 More than a pharmacy, this iconic spot is famous for inventing the “Scrambled Dog,” a legendary Southern hot dog. It’s a quirky local institution that blends small-town charm with food history. What's so special about this place is that different generations can share it together. You are likely to see groups of teens, millenials, and  boomers alike all eating here together sharing a famous scrambled dog!             </p>         </div>         </div>`)[0];
+                popup_640d5731d37bdc11df666fed3801ae0c.setContent(html_c20e2b65d89d8ea07fbac2998d53733e);
+            
+        
+
+        marker_e6590413d2a93ce87440752697efb1ca.bindPopup(popup_640d5731d37bdc11df666fed3801ae0c)
+        ;
+
+        
+    
+    
+            marker_e6590413d2a93ce87440752697efb1ca.bindTooltip(
+                `<div>
+                     "Dinglewood Pharmacy"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e6590413d2a93ce87440752697efb1ca.setIcon(icon_6789a925faa4e45ad2d3bf4a0f64180b);
+            
+    
+            var marker_5666ba3303351224754afe46a23d9543 = L.marker(
+                [32.483271, -84.965384],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_dc403563ac00c379f9a53eecf7d78f8b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "credit-card",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_421b671b8adf1570da8169f50f1b7c2a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1bd7cb370f6f8f7ac7adee659af7f119 = $(`<div id="html_1bd7cb370f6f8f7ac7adee659af7f119" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Park Place Interiors"</h3>             <img src="https://files.constantcontact.com/ea69da79001/0f624cff-fcf1-415a-b06f-04902ff571e9.jpg " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Store             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 Welcome to my first place of work! This is a locally owned design shop that showcases Columbus’s appreciation for Southern style and home decor. It highlights the city’s strong culture of locally supported businesses and interior design             </p>         </div>         </div>`)[0];
+                popup_421b671b8adf1570da8169f50f1b7c2a.setContent(html_1bd7cb370f6f8f7ac7adee659af7f119);
+            
+        
+
+        marker_5666ba3303351224754afe46a23d9543.bindPopup(popup_421b671b8adf1570da8169f50f1b7c2a)
+        ;
+
+        
+    
+    
+            marker_5666ba3303351224754afe46a23d9543.bindTooltip(
+                `<div>
+                     "Park Place Interiors"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5666ba3303351224754afe46a23d9543.setIcon(icon_dc403563ac00c379f9a53eecf7d78f8b);
+            
+    
+            var marker_901043a7591216bc751b38e360c9fdcf = L.marker(
+                [32.465102, -84.991177],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_75bc876fb6cfce4a3c5b5e41eae5cf80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "film",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a951a3b19f4b9ece6a6b8b2fa604d9f7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3690489afb9bd2901143d86d33511380 = $(`<div id="html_3690489afb9bd2901143d86d33511380" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Springer Opera House"</h3>             <img src="https://visitcolumbusga.com/assets/uploads/business/Greg_Comstock_-_Springer_Opera_House-6.jpg " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Activity             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 Known as the “State Theatre of Georgia,” the Springer Opera House has hosted performances since the 1870s. It anchors downtown’s arts scene and connects modern Columbus to its historic roots. Every year at Christmastime, my whole family takes a trip here to  watch the current show. It is also said that the Springer is home to some ghosts, so if you're interested, you should read up on some of the haunted tales!             </p>         </div>         </div>`)[0];
+                popup_a951a3b19f4b9ece6a6b8b2fa604d9f7.setContent(html_3690489afb9bd2901143d86d33511380);
+            
+        
+
+        marker_901043a7591216bc751b38e360c9fdcf.bindPopup(popup_a951a3b19f4b9ece6a6b8b2fa604d9f7)
+        ;
+
+        
+    
+    
+            marker_901043a7591216bc751b38e360c9fdcf.bindTooltip(
+                `<div>
+                     "Springer Opera House"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_901043a7591216bc751b38e360c9fdcf.setIcon(icon_75bc876fb6cfce4a3c5b5e41eae5cf80);
+            
+    
+            var marker_28806ca0de9d617a6b058f79cd0126fe = L.marker(
+                [32.388797, -84.955358],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_fbdc795e1d55021d276f523932a70a75 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a9cda76380258962f447a18b7724ab01 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_28649b0ac79358ca7573234ab1bfcc1e = $(`<div id="html_28649b0ac79358ca7573234ab1bfcc1e" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"National Infantry Museum"</h3>             <img src="https://visitcolumbusga.com/assets/uploads/business/military_museum_1.jpg " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Activity             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 Fun fact, Columbus is home  Fort Benning, a massive US Army post supporting more than 120,000 soldiers. The Infantry Museum is one of the top military museums in the country, this site honors U.S. Army infantry soldiers and sits near Fort Benning. It reflects the deep military heritage that shapes much of Columbus’s identity.             </p>         </div>         </div>`)[0];
+                popup_a9cda76380258962f447a18b7724ab01.setContent(html_28649b0ac79358ca7573234ab1bfcc1e);
+            
+        
+
+        marker_28806ca0de9d617a6b058f79cd0126fe.bindPopup(popup_a9cda76380258962f447a18b7724ab01)
+        ;
+
+        
+    
+    
+            marker_28806ca0de9d617a6b058f79cd0126fe.bindTooltip(
+                `<div>
+                     "National Infantry Museum"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_28806ca0de9d617a6b058f79cd0126fe.setIcon(icon_fbdc795e1d55021d276f523932a70a75);
+            
+    
+            var marker_2d35db72ba2789f0d40de33dc7d34170 = L.marker(
+                [32.451504, -84.984186],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_df941336cf48788aa3e64b5282b5ccc8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "bullhorn",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cafcbceb665002f7c90f7a3f4bee846b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dffa048f25818fa73fc026f8d8dc9990 = $(`<div id="html_dffa048f25818fa73fc026f8d8dc9990" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Columbus Civic Center"</h3>             <img src="https://s1.ticketm.net/dam/v/d3f/8a195ff9-be01-420e-a318-6a5226df8d3f_526331_SOURCE.jpg " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Sports             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 A major event venue hosting concerts, hockey games, graduations, and community events year-round. It serves as one of the city’s central gathering places for entertainment and large celebrations. To highlight the Civic Center's range of activities even more, let it be known that I had my high school graduation ceremony here, have attended concerts here, and have even been to a few hockey games here.             </p>         </div>         </div>`)[0];
+                popup_cafcbceb665002f7c90f7a3f4bee846b.setContent(html_dffa048f25818fa73fc026f8d8dc9990);
+            
+        
+
+        marker_2d35db72ba2789f0d40de33dc7d34170.bindPopup(popup_cafcbceb665002f7c90f7a3f4bee846b)
+        ;
+
+        
+    
+    
+            marker_2d35db72ba2789f0d40de33dc7d34170.bindTooltip(
+                `<div>
+                     "Columbus Civic Center"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2d35db72ba2789f0d40de33dc7d34170.setIcon(icon_df941336cf48788aa3e64b5282b5ccc8);
+            
+    
+            var marker_bac1d51e79206da6f6ed3c7ac53ec76e = L.marker(
+                [32.471762, -84.993621],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_d63d8e7cf95650cec76423432d63cfa6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c7a9ee865ec8136ba369d438cf31fe75 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ba970b2c3267b1787207eb5a53a743b = $(`<div id="html_6ba970b2c3267b1787207eb5a53a743b" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Country's BBQ"</h3>             <img src="https://roadfood.com/wp-content/uploads/2016/03/rfl_4847.jpg " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Restaurant              </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 A classic local barbecue chain beloved for its laid-back vibe and Southern comfort food. Eating here feels like participating in a long-standing Columbus tradition. Fun fact, my sister worked here during her time in high school!             </p>         </div>         </div>`)[0];
+                popup_c7a9ee865ec8136ba369d438cf31fe75.setContent(html_6ba970b2c3267b1787207eb5a53a743b);
+            
+        
+
+        marker_bac1d51e79206da6f6ed3c7ac53ec76e.bindPopup(popup_c7a9ee865ec8136ba369d438cf31fe75)
+        ;
+
+        
+    
+    
+            marker_bac1d51e79206da6f6ed3c7ac53ec76e.bindTooltip(
+                `<div>
+                     "Country's BBQ"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bac1d51e79206da6f6ed3c7ac53ec76e.setIcon(icon_d63d8e7cf95650cec76423432d63cfa6);
+            
+    
+            var marker_9cd0104599ff5cab7e6b6ba13de1b861 = L.marker(
+                [32.826239, -84.844026],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_38af0a634f4a03a77325346c24c6ed74 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_942d7fa2e299b3ce78e6c7020c923547 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2224f9cf87d234acd5469c7c923a2651 = $(`<div id="html_2224f9cf87d234acd5469c7c923a2651" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Calloway Gardens"</h3>             <img src="https://greatruns.com/wp-content/uploads/2021/11/Callaway-Gardens-Flickr-JR-P.jpg " style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Activity             </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 Located just outside Columbus, this scenic retreat features seasonal festivals, biking trails, and beautiful gardens. It’s a favorite weekend escape for locals seeking nature and relaxation. One of my favorite times to visit Callaway Gardens is during Christmas because they have the most spectacular Christmas lights.             </p>         </div>         </div>`)[0];
+                popup_942d7fa2e299b3ce78e6c7020c923547.setContent(html_2224f9cf87d234acd5469c7c923a2651);
+            
+        
+
+        marker_9cd0104599ff5cab7e6b6ba13de1b861.bindPopup(popup_942d7fa2e299b3ce78e6c7020c923547)
+        ;
+
+        
+    
+    
+            marker_9cd0104599ff5cab7e6b6ba13de1b861.bindTooltip(
+                `<div>
+                     "Calloway Gardens"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9cd0104599ff5cab7e6b6ba13de1b861.setIcon(icon_38af0a634f4a03a77325346c24c6ed74);
+            
+    
+            var marker_03b9b765ff823071a7d0e059fd24da23 = L.marker(
+                [32.47074, -84.972079],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_5bac868982345dbf43e8404ab9af63de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_780fbaf0d537bdb26d34ed8de1ade1c0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_936244056163bd8ae55faae26c70e99c = $(`<div id="html_936244056163bd8ae55faae26c70e99c" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Jarfly"</h3>             <img src="https://visitcolumbusga.com/assets/uploads/general/jarfly.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Restaurant              </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 This trendy neighborhood restaurant located in Midtown Columbus is known for creative comfort food and a modern, social atmosphere. It represents the newer wave of dining helping revitalize Columbus’s food scene. I have many memories of going here with my lacrosse teams after games, or for a  fun meal with my family as it is walking distance from our house.             </p>         </div>         </div>`)[0];
+                popup_780fbaf0d537bdb26d34ed8de1ade1c0.setContent(html_936244056163bd8ae55faae26c70e99c);
+            
+        
+
+        marker_03b9b765ff823071a7d0e059fd24da23.bindPopup(popup_780fbaf0d537bdb26d34ed8de1ade1c0)
+        ;
+
+        
+    
+    
+            marker_03b9b765ff823071a7d0e059fd24da23.bindTooltip(
+                `<div>
+                     "Jarfly"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03b9b765ff823071a7d0e059fd24da23.setIcon(icon_5bac868982345dbf43e8404ab9af63de);
+            
+    
+            var marker_42a7cf9820cccf3f4a8b1d1a5e00e633 = L.marker(
+                [32.466497, -84.992882],
+                {
+}
+            ).addTo(map_43827b179b02bdccb7c584a2e5259d7e);
+        
+    
+            var icon_695973dfbd08270b6fcd577d70edd6f4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3700408103bde0204ac264ff7e561b1f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_06e0df23de1a4754f1681cfc743c268a = $(`<div id="html_06e0df23de1a4754f1681cfc743c268a" style="width: 100.0%; height: 100.0%;">         <div style="width: 300px; font-family: Arial, sans-serif;">             <h3 style="margin: 0 0 10px 0; color: #333;">"Ironbank Coffee Co"</h3>             <img src="https://visitcolumbusga.com/assets/uploads/blog/Iron_Bank_Reduced.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">             <p style="margin: 5px 0; color: #666; font-style: italic;">                 <strong>Type:</strong> Restaurant              </p>             <p style="margin: 10px 0; color: #333; line-height: 1.5;">                 Housed in a historic former bank building, this coffee shop blends great coffee with striking architecture. It’s a popular downtown meeting spot for students, professionals, and visitors exploring the city.             </p>         </div>         </div>`)[0];
+                popup_3700408103bde0204ac264ff7e561b1f.setContent(html_06e0df23de1a4754f1681cfc743c268a);
+            
+        
+
+        marker_42a7cf9820cccf3f4a8b1d1a5e00e633.bindPopup(popup_3700408103bde0204ac264ff7e561b1f)
+        ;
+
+        
+    
+    
+            marker_42a7cf9820cccf3f4a8b1d1a5e00e633.bindTooltip(
+                `<div>
+                     "Ironbank Coffee Co"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_42a7cf9820cccf3f4a8b1d1a5e00e633.setIcon(icon_695973dfbd08270b6fcd577d70edd6f4);
+            
+</script>
+</html>

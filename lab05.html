@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 5: Vibe Coding Reflection">
+    <meta name="author" content="Graham Gobbel">
+    <title>Lab 5: Vibe Coding | Graham Gobbel</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <!-- Dark mode toggle button -->
+        <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+ 
+        <!-- Hamburger menu button (visible on mobile) -->
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lab02.html">Lab 2: AI Evaluation</a></li>
+            <li><a href="lab03.html">Lab 3: Visualization Critique</a></li>
+            <li><a href="lab04.html">Lab 4: Tableau Viz</a></li>
+            <li><a href="lab05.html">Lab 5: Vibe Coding</a></li>
+            <li><a href="lab06.html">Lab 6: Hometown Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Lab 5: Vibe Coding</h1>
+        <p>Enhancing My Portfolio with AI Assistance</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Lab Requirements</h2>
+            <p><strong>Assignment:</strong> Explore AI-assisted coding through practical experiments and critical reflection.</p>
+            <ul>
+                <li>Complete 2+ experiments: enhance portfolio, generate Python code, or debug with AI</li>
+                <li>Document code with honest comments about what you understand vs. still learning</li>
+                <li>Write 400-600 word reflection on when AI helps, when it doesn't, and personal guidelines for use</li>
+                <li><strong>Key principle:</strong> You must be able to explain and modify any code you use</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Lab 5 Reflection</h2>
+            
+            <p>
+                For the Vibe Coding lab, I decided to both enhance my portfolio and debug an error that came with that enhancement. Although it does not look like I made large changes, I found this more beneficial to my learning because I got to implement smaller, easier-to-understand chunks of code rather than letting my imagination run wild, but having the AI do a bunch of things that I do not understand.
+            </p>
+            
+            <h3>Adding Dark Mode</h3>
+            <p>
+                First, I took inspiration from one of the lab suggestions and planned to add a dark mode feature to the website. I had this option on the portfolio I made last semester and really enjoyed it, so I thought it would be a good addition here too. The initial prompt I asked was, "I am looking to add a dark mode feature to my portfolio and would like assistance. Would I primarily make this change on the CSS page?" The AI was helpful here as it gave me a breakdown, by percentage, of where all of the work to implement dark mode would be happening. It said that 60% would be CSS, 20% would be HTML, and 20% would be JavaScript. Even understanding how all three languages were working together here, rather than just seeing the code it provided, helped my learning process so much more. The AI then gave me step-by-step instructions on where to add each chunk of code within my pages. I appreciated going in and doing this myself rather than letting the AI do it and simply hitting the "keep" changes button because it allowed me to learn through a little bit of trial and error with the specific code placement. However, I will say that I added all of the changes myself on the first HTML page, but let the AI go in and add all of the same changes on the other pages. I thought that was okay because I already learned what to do, but it was a huge time-saver in the means of redundancy. Overall, in this section, I learned that the CSS added the dark colors and smooth transitions, the HTML added the toggle button and navigation, and the JavaScript added the toggle function and localStorage to remember the choice.
+            </p>
+            
+            <h3>Debugging Accessibility Issues</h3>
+            <p>
+                After adding the dark mode button, I noticed an accessibility error in that whenever I shrank the preview screen, the button would appear on top of the already established navigation buttons. This is where I would say the AI was a little problematic because I would not expect it to cause an error that seems so simple to avoid, but I am also glad it did because it led to another learning opportunity. After asking a few simple questions to fix the error, I noticed I was not completely understanding what all of the code meant so I asked, "what does this part specifically do: .dark-mode-toggle:hover {transform: scale(1.05); /* Remove translateY from hover */" Here I learned that whenever the user hovers over the button on a mobile device, it grows 5% larger to create a subtle pop effect, and this is to give the user feedback that the button is working and interactive. That is something that I never would have thought of, but I think is such a great subtle addition, and I am so glad I can understand what that part of the code is doing now.
+            </p>
+            
+            <h3>Additional Refinements</h3>
+            <p>
+                Those were the main areas I targeted for this lab, but I also went in and changed a few other parts. For example, I really did not like the colors the AI provided for the dark mode feature, so I went in and changed all of those manually. I ran into a slight roadblock when doing that because I initially could not see any changes on the preview when I was changing the colors. This led me to ask AI why that was happening, and it told me that I actually had a duplicate "body.dark-mode" section in my CSS. I think that is a great example of how AI can find a human error that is so easy for us to overlook, in a matter of seconds.
+            </p>
+            
+            <h3>Reflections on AI-Assisted Learning</h3>
+            <p>
+                Overall, I had a good time with this assignment, and I appreciate labs like this where I get to take time to meaningfully learn with AI. I do think there can be tradeoffs to using a lot of AI assistance to code, especially in a class like ours, where most people do not have coding experience. I think that sometimes, because our portfolios are large, interactive, and have a lot of components, it is easy for us to overlook things and not take time to understand what the code is doing, just because there is so much of it. Because of that, one might not even know where to go to make certain changes, and will ask AI to do it just because it is easier. I am trying to get better about this myself because, since I am starting to code and use new languages in so many of my classes, I know how important it is to truly understand what I am doing. That is why I decided to tackle what might not look like a very hard task for this lab. Although it might look simple from an outside perspective, I actually took the time to understand and teach myself what each line is doing, and I think that pushed me more than tackling something bigger would have.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Graham Gobbel | DCDA 40833 Skills Portfolio</p>
+    </footer>
+
+    <!-- Dark Mode JavaScript -->
+    <script>
+        // Get the dark mode toggle button
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        const themeIcon = document.querySelector('.theme-icon');
+        
+        // Check if user previously selected dark mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';  // Sun icon for dark mode
+        }
+        
+        // Toggle dark mode when button is clicked
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Update icon and save preference
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.textContent = '☀️';  // Show sun when dark
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.textContent = '🌙';  // Show moon when light
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+   
+    <!-- Hamburger Menu JavaScript -->
+    <script>
+        // Get the hamburger button and navigation menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        // Toggle menu when hamburger is clicked
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Update aria-expanded for accessibility
+            const isExpanded = hamburger.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close menu when a link is clicked (better UX on mobile)
+        const navLinks = document.querySelectorAll('#nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>

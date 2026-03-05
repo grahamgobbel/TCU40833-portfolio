@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Python coursework from Business Information Systems Development">
+    <meta name="author" content="Graham Gobbel">
+    <title>Python Coursework | Graham Gobbel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Code block styling */
+        pre {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #1f2937;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #1f2937;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #1f2937;
+        }
+        
+        body.dark-mode pre {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode code {
+            background-color: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode pre code {
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- Dark mode toggle button -->
+        <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+ 
+        <!-- Hamburger menu button (visible on mobile) -->
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lab02.html">Lab 2: AI Evaluation</a></li>
+            <li><a href="lab03.html">Lab 3: Visualization Critique</a></li>
+            <li><a href="lab04.html">Lab 4: Tableau Viz</a></li>
+            <li><a href="lab05.html">Lab 5: Vibe Coding</a></li>
+            <li><a href="lab06.html">Lab 6: Hometown Map</a></li>
+            <li><a href="python-coursework.html" class="active">Python Coursework</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Separate Python Coursework</h1>
+        <p>Business Information Systems Development</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>About This Coursework</h2>
+            <p>This page showcases Python assignments completed for my Business Information Systems Development class. These projects demonstrate my growing proficiency with Python programming, data manipulation, and problem-solving skills in a business context.</p>
+        </section>
+
+        <section>
+            <h2>Project 1: Decking Cost Calculator</h2>
+            <p><strong>Description:</strong> This application calculates the total cost of a decking job based on square footage and material type. Users can choose between three decking materials (pressure-treated lumber, redwood, or composite), each with different costs per square foot.</p>
+            
+            <h3>Code:</h3>
+            <pre><code class="language-python">'''
+Program: Decking Calculator
+Developer: Graham Gobbel
+Date: 2/12/2026
+Purpose: The application calculates the cost for a decking job.
+'''
+
+#Display title of the application
+print("Decking Cost Calculator\n") #prints name of the app
+
+# Display the decking type options and their corresponding costs per square foot to the user
+print("----------------------------------------------------------")
+print("Decking Type Options:")
+print("1. Pressure-treated lumber: $2.35 per square foot")
+print("2. Redwood: $7.75 per square foot")
+print("3. Composite: $8.50 per square foot")
+print("---------------------------------------------------------\n")
+
+#Input
+
+#asks user for the square footage of decking needed
+square_footage = float(input("Enter the square footage of the deck: \n"))
+
+'''
+#my first idea was to have a dictionary, but following along in class (not using dictionaries yet),
+might come back later
+
+decking_types = {
+    "pressure-treated lumber": 2.35,
+    "redwood": 7.75,
+    "composite": 8.50
+}
+'''
+#  The user must be able to select from three decking types: pressure-treated lumber, redwood, or composite
+decking_type = input("\nEnter the type of decking (pressure-treated lumber, redwood, or composite): \n") #asks user for the type of decking they want
+
+
+#Processing
+#the program should calculate the total cost of the decking job based on the square footage and the type of decking selected by the user
+if decking_type == "pressure-treated lumber":
+    cost_per_square_foot = 2.35
+elif decking_type == "redwood":
+    cost_per_square_foot = 7.75
+elif decking_type == "composite":    
+    cost_per_square_foot = 8.50
+else:
+    print("Invalid decking type entered.")
+
+if decking_type in ["pressure-treated lumber", "redwood", "composite"]:
+    estimated_cost = square_footage * cost_per_square_foot #calculates the estimated cost of the decking job
+
+
+#Output
+    print("\n----------------------------------------------------------------------") #for cleanliness 
+    print(f"The estimated cost for {square_footage} square feet of the {decking_type} is: ${estimated_cost:.2f}") #displays the estimated cost of the decking job to the user
+    print("-----------------------------------------------------------------------\n") #for cleanliness
+</code></pre>
+            
+            <h3>Example Output:</h3>
+            <figure>
+                <img src="images/deckingcalcIMAGE.png" alt="Decking Cost Calculator output example" style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                <figcaption>Example of the Decking Cost Calculator in action</figcaption>
+            </figure>
+            
+            <h3>Key Learnings:</h3>
+            <p>This project helped me understand conditional statements (if/elif/else), user input handling with validation, basic arithmetic operations, and string formatting for currency display.</p>
+        </section>
+
+        <section>
+            <h2>Project 2: Scuba Expedition Application</h2>
+            <p><strong>Description:</strong> This application calculates the total cost for a scuba diving expedition based on location (Australia, Belize, or Fiji), the specific dive selected, and the number of divers. The program uses a custom function to eliminate code repetition and handle dive selection, validation, and cost calculation efficiently.</p>
+            
+            <h3>Code:</h3>
+            <pre><code class="language-python">'''
+Application Name: Scuba Expedition Application
+Developer: Graham Gobbel
+Description: The application calculates the total due for a scuba expedition based on the selected location, dive selected, and the number of people in the group. 
+Date: 2/24/26
+'''
+
+####################### New Code for Assignment 4 ###############################
+#adding a function below to simplify the code and get rid of the repetition/redundancy that happens with all of the if statements when selecting a dive. This function 
+# takes in the dive options, location, and number of divers, and then prints the available dives, validates the user's selection, and calculates the total cost
+def choose_dive(dives, location, number_divers):
+    print(f"Available dives in {location}:")
+
+    for dive in dives: #for loop that prints the dives in the chosen location and their costs
+        print(dive, ":", "$", dives[dive])
+
+    selected_dive = input("What dive are you selecting? ") #ask user to select a dive
+    while selected_dive not in dives:  #makes sure that the dive chosen is one of the options available for that location, if not ask the user to re-enter a dive
+        print("Please select a dive from the options above.")
+        selected_dive = input("What dive are you selecting? ")
+
+    total_cost = number_divers * dives[selected_dive] #calculates the total cost by multiplying the number of divers by the cost of the selected dive
+
+    return selected_dive, total_cost #the output is the selected dive and the total cost, which will be printed at the end of the program
+#################################################################################
+
+if __name__ == "__main__":
+
+    #create dictioniaries for each location right off the bat for simplicity
+    Australia= {'Ribbon Reef': 650, 'Byron Bay': 400}
+
+    Belize= {'Esmeralda Canyon': 375,'The Aquarium': 350}
+
+    Fiji = {'E-6': 480, 'Rainbow Reef': 425}
+
+    valid_locations = ["Australia", "Belize", "Fiji"] #created valid locations list
+
+
+    print ("=" * 50) #took idea from Preston sharing in class :)
+    print ("Welcome to the Scuba Expedition Application!") #print application name
+    print ("=" * 50)
+
+    location = input("The diving location options are Australia, Belize, and Fiji.\nWhat location are you diving in? ") #ask user for the location that they are diving in
+    while location not in valid_locations: #validate that the location is one of the ones listed
+        print("Please select a country from the above options")
+        location = input("The diving location options are Australia, Belize, and Fiji.\nWhat location are you diving in?") #if user entered an invalid loocation, ask the to re-enter the location
+
+    number_divers= int(input("How many people are in your dive team? ")) #user inputs the amount of people in their dive team
+    while number_divers <=0:
+        print("Please enter a dive team size greater than 0.") #validate that the number of divers is a positive integer, if not ask the user to re-enter the number of divers
+        number_divers= int(input("How many people are in your dive team? "))
+
+    ######################## New Code ##############################
+
+    #Removed old if statements and replaced with simpler if statements. These call the new function which takes care of printing the dive options, validating the user's selection, 
+    #and calculating the total cost. This makes the code much cleaner and easier to read, while still achieving the same functionality.
+
+    if location == "Australia": #if the user types in Australia, the function will be called with the Australia dive options, location, and number of divers
+        selected_dive, total_cost = choose_dive(Australia, location, number_divers)
+
+    elif location == "Belize":
+        selected_dive, total_cost = choose_dive(Belize, location, number_divers)
+
+    elif location == "Fiji":
+        selected_dive, total_cost = choose_dive(Fiji, location, number_divers)
+        
+    print(f"You have selected {selected_dive} dive in {location} for {number_divers} people at a total cost of ${total_cost:,}. Thank you!")
+</code></pre>
+            
+            <h3>Example Output:</h3>
+            <figure>
+                <img src="images/ScubaIMAGE.png" alt="Scuba Expedition Application output example" style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                <figcaption>Example of the Scuba Expedition Application in action</figcaption>
+            </figure>
+            
+            <h3>Key Learnings:</h3>
+            <p>This project taught me how to create reusable functions to eliminate code redundancy, work with dictionaries to organize data, implement loops for iteration, validate user input, and return multiple values from a function. The refactoring from repetitive if statements to a single function demonstrated the importance of writing clean, maintainable code.</p>
+        </section>
+
+        <section>
+            <h2>Project 3: Data Visualization with Matplotlib</h2>
+            <p><strong>Description:</strong> This application creates a horizontal bar graph to visualize categorical and numerical data using the matplotlib library. Users input a graph title, column headers, and data points, which are then displayed as an interactive horizontal bar chart.</p>
+            
+            <h3>Code:</h3>
+            <pre><code class="language-python">'''
+Application Title: VS Code Assignment 5
+Developer: Graham Gobbel
+Date: 3/3/2026
+Purpose: Display a horizontal bar graph of categorical and interger data using the matplotlib library.
+'''
+
+import matplotlib.pyplot as plt # imports a matplot library to do plotting 
+
+#prompt the user for a title for the graph
+from ast import While
+
+
+graph_title= input("Enter title for the data:")
+print("You entered: ", graph_title)
+
+#Prompt the user for the headers of two columns of a table. Output the column headers
+column1_header = input("Enter the column 1 header: \n")
+print("You entered:", column1_header)
+column2_header = input("Enter the column 2 header: \n")
+print("You entered:", column2_header)
+
+#Prompt the user for data points
+# the user should enter a string and an integer separated by a comma. 
+#Store the string components of the data points in a list of strings. 
+#Store the integer components of the data points in a list of integers
+
+#variable intialization
+data_entry= ''
+data_categories = []
+data_numbers = []
+data_entry= input("Enter a data point (-1 to stop input): ")
+while data_entry != '-1':
+    my_tokens= data_entry.split(',')
+    data_categories.append(my_tokens[0])
+    data_numbers.append(int(my_tokens[1]))
+    print('Data string: ', my_tokens[0])
+    print('Data integer: ', my_tokens[1])
+    data_entry= input("Enter a data point (-1 to stop input): ")
+
+
+objects = data_categories
+x_pos = range(len(objects)) # creates the number of bars required
+performance = data_numbers
+
+plt.barh(x_pos, performance)  #creates a horizontal bar graph ploting performance versus the number of bars required
+plt.yticks(x_pos, objects)    #labels the bars with programming language names
+plt.xlabel(column2_header)
+plt.title(graph_title)
+plt.show()
+</code></pre>
+            
+            <h3>Example Output:</h3>
+            <figure>
+                <img src="images/studentsandgrades.png" alt="Matplotlib horizontal bar chart example" style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                <figcaption>Example of a horizontal bar chart generated by the program</figcaption>
+            </figure>
+            
+            <h3>Key Learnings:</h3>
+            <p>This project introduced me to data visualization using the matplotlib library. I learned how to import and use external libraries, work with lists to store user input, parse comma-separated values using string methods, create horizontal bar charts, customize graph labels and titles, and display interactive visualizations. This demonstrated the power of Python for data analysis and presentation.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><a href="https://github.com/grahamgobbel/TCU40833-portfolio" rel="noopener noreferrer" target="_blank">View Repository on GitHub</a></p>
+        <p>&copy; 2026 Graham Gobbel | DCDA 40833 | TCU</p>
+    </footer>
+
+    <!-- Dark Mode Toggle JavaScript -->
+    <script>
+        // Get the dark mode toggle button
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        const themeIcon = document.querySelector('.theme-icon');
+        
+        // Check if user previously selected dark mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';
+        }
+        
+        // Toggle dark mode when button is clicked
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Update icon and save preference
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
+    <!-- Hamburger Menu JavaScript -->
+    <script>
+        // Get the hamburger button and navigation menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        // Toggle menu when hamburger is clicked
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Update aria-expanded for accessibility
+            const isExpanded = hamburger.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = document.querySelectorAll('#nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>

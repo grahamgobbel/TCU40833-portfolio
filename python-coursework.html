@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic meta tags for proper HTML5 setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Python coursework from Business Information Systems Development">
+    <!-- Page-specific metadata -->
+    <meta name="description" content="Python projects from Business Information Systems Development course">
     <meta name="author" content="Graham Gobbel">
     <title>Python Coursework | Graham Gobbel</title>
+    <!-- CSS file reference for styling -->
     <link rel="stylesheet" href="css/styles.css">
     <style>
         /* Code block styling */
@@ -78,12 +81,21 @@
 
     <!-- Header -->
     <header>
+        <!-- Personal logo - tooltip pops up on hover with contact links -->
+        <div class="logo">
+            GG
+            <!-- Tooltip container - CSS makes this appear on hover -->
+            <div class="logo-tooltip">
+                <a href="https://www.linkedin.com/in/graham-gobbel" target="_blank">LinkedIn</a>
+                <a href="mailto:graham.gobbel@tcu.edu">graham.gobbel@tcu.edu</a>
+            </div>
+        </div>
         <h1>Separate Python Coursework</h1>
         <p>Business Information Systems Development</p>
     </header>
 
-    <main>
-        <section>
+    <!-- Main content area for all project descriptions -->    <main>
+        <!-- First section introduces the coursework -->       <section>
             <h2>About This Coursework</h2>
             <p>This page showcases Python assignments completed for my Business Information Systems Development class. These projects demonstrate my growing proficiency with Python programming, data manipulation, and problem-solving skills in a business context.</p>
         </section>
@@ -93,6 +105,8 @@
             <p><strong>Description:</strong> This application calculates the total cost of a decking job based on square footage and material type. Users can choose between three decking materials (pressure-treated lumber, redwood, or composite), each with different costs per square foot.</p>
             
             <h3>Code:</h3>
+            <!-- Using pre and code tags to display the Python code with proper formatting -->
+            <!-- pre preserves whitespace and indentation, code indicates it's computer code -->
             <pre><code class="language-python">'''
 Program: Decking Calculator
 Developer: Graham Gobbel
@@ -152,6 +166,8 @@ if decking_type in ["pressure-treated lumber", "redwood", "composite"]:
 </code></pre>
             
             <h3>Example Output:</h3>
+            <!-- Figure element is semantic HTML for images with captions -->
+            <!-- It groups the image and caption together logically -->
             <figure>
                 <img src="images/deckingcalcIMAGE.png" alt="Decking Cost Calculator output example" style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;">
                 <figcaption>Example of the Decking Cost Calculator in action</figcaption>

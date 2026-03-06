@@ -33,6 +33,14 @@ body.dark-mode {
     --text-secondary: #285593;     /* Medium gray */
     --bg-color: #0f172a;           /* Dark navy background */
     --white: #1e293b;              /* Dark surface color */
+    /* Dark mode background texture */
+    background-image: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 /* =========================
    Basic Reset & Typography
@@ -52,6 +60,27 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+    /* Subtle background texture */
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.02) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.02) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.02) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    /* Loading animation */
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* =========================
@@ -64,18 +93,105 @@ header {
     padding: 2rem 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Personal Logo */
+.logo {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    background: #9ba3d6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: 'Georgia', serif;
+    letter-spacing: 1px;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-in;
+    /* Position in top right */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: 0.85;
+    backdrop-filter: blur(10px);
+}
+
+.logo:hover {
+    transform: scale(1.08);
+    opacity: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Logo tooltip */
+.logo-tooltip {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    min-width: 220px;
+    z-index: 1000;
+}
+
+.logo:hover .logo-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.logo-tooltip a {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.logo-tooltip a:hover {
+    color: var(--accent-color);
+}
+
+.logo-tooltip a:first-child {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.2rem;
+}
+
+/* Dark mode tooltip styling */
+.dark-mode .logo-tooltip {
+    background: var(--bg-secondary);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .logo-tooltip a:first-child {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 header h1 {
     color: white;
     margin: 0 0 0.5rem 0;
     font-size: 2rem;
+    animation: fadeIn 1s ease-in;
 }
 
 header p {
     margin: 0;
     opacity: 0.9;
     font-size: 1.1rem;
+    animation: fadeIn 1.2s ease-in;
 }
 
 nav {
@@ -210,6 +326,19 @@ main section {
     margin-bottom: 2rem;       /* Space between sections */
     border-radius: 8px;        /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Smooth loading animation */
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Style h2 headings inside sections */
@@ -427,6 +556,27 @@ tr:nth-child(even) {
     color: var(--text-color);
     transition: all 0.3s ease;
     position: relative;
+    /* Loading animation */
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+/* Staggered animation for multiple cards */
+.portfolio-card:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-card:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-card:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-card:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-card:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .portfolio-card:hover {

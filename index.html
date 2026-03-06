@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic setup - tells the browser what kind of document this is -->
     <meta charset="UTF-8">
+    <!-- This makes the site look good on phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Description for search engines so people can find my portfolio -->
     <meta name="description" content="Skills Portfolio showcasing work from DCDA 40833">
     <meta name="author" content="Graham Gobbel">
+    <!-- Title that shows up in the browser tab -->
     <title>Graham Gobbel | DCDA 40833 Skills Portfolio</title>
+    <!-- Linking to my stylesheet so everything looks nice -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Navigation bar that appears at the top of every page -->
     <nav>
      <!-- Navigation: Links to all portfolio pages -->
-    <!-- Dark mode toggle button -->
+    <!-- Dark mode button - lets users switch between light and dark themes -->
     <button class="dark-mode-toggle" aria-label="Toggle dark mode">
         <span class="theme-icon">🌙</span>
     </button>
  
         <!-- Hamburger menu button (visible on mobile) -->
+        <!-- These three spans create the three lines you see in mobile menus -->
         <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
         
+        <!-- Unordered list holding all my navigation links -->
         <ul id="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="lab02.html">Lab 2: AI Evaluation</a></li>
@@ -36,6 +44,15 @@
 
     <!-- Header: Your name and course info -->
     <header>
+        <!-- My personal logo with hover tooltip for contact info -->
+        <div class="logo">
+            GG
+            <!-- Tooltip appears when you hover over the logo - shows my contact info -->
+            <div class="logo-tooltip">
+                <a href="https://www.linkedin.com/in/graham-gobbel" target="_blank">LinkedIn</a>
+                <a href="mailto:graham.gobbel@tcu.edu">graham.gobbel@tcu.edu</a>
+            </div>
+        </div>
         <h1>Graham Gobbel</h1>
         <p>DCDA 40833 Skills Portfolio | Spring 2026</p>
     </header>
@@ -74,14 +91,17 @@
 
 
         <!-- Portfolio Section: Links to all lab pages -->
+        <!-- Using semantic 'section' element to organize content logically -->
         <section id="portfolio">
             <h2>My Work</h2>
             <p>Click on any card below to view that lab assignment.</p>
 
             <!-- Portfolio Grid: Cards linking to each lab page -->
+            <!-- This div uses CSS Grid to create a responsive card layout -->
             <div class="portfolio-grid">
 
                 <!-- Lab 2: AI Tool Evaluation -->
+                <!-- Each card is an anchor tag styled as a block element -->
                 <a href="lab02.html" class="portfolio-card">
                     <h3>AI Tool Evaluation</h3>
                     <span class="lab-tag">Lab 2</span>
@@ -125,18 +145,6 @@
 
             </div>
         </section>
-
-        <!-- Reflection Section: Optional semester reflection -->
-        <section id="reflection">
-            <h2>Semester Reflection</h2>
-            <p><strong>What I learned:</strong> This semester has been quite the journey. Coming in with some HTML/CSS experience from a previous class, I thought I had a decent foundation, but I ended up learning so much more. From critically evaluating AI tools to building interactive maps with Python, each lab pushed me in different ways. What really stuck with me was how everything connected. After spending Lab 2 analyzing AI tools and their limitations, it was eye-opening to then use those same tools in Lab 5 for my own coding. I also got to apply Tufte's visualization principles that we learned in Lab 3 when designing my hometown map. The mapping project was probably the most challenging but rewarding, bringing together design, Python coding, and data visualization all at once.</p>
-            
-            <p><strong>Challenges I overcame:</strong> Working with AI turned out to be trickier than I expected. In Lab 5, I really had to push myself to understand the code rather than just copying what the AI gave me. It was uncomfortable at first to admit when I didn't fully understand something, but it made me a better coder in the long run. The hometown map project definitely tested my patience with all the debugging. I remember spending way too long trying to figure out why my map disappeared after adding a reflection section (spoiler: it was a CSS selector issue). Making everything look consistent across my portfolio while also meeting each lab's specific requirements was another balancing act. But honestly, all that troubleshooting taught me that not knowing the answer right away is okay. You just have to keep trying different approaches.</p>
-            
-            <p><strong>How I grew:</strong> I started the semester thinking about data analytics and digital culture as separate things, but now I see how they overlap everywhere. Data visualization isn't just about making pretty charts. You have to think about what story you're telling, what you're leaving out, and whether you're being fair to your audience. The AI evaluation lab really changed how I view technology. It's not this neutral tool. It reflects whoever built it and whatever data they used. By the end of the semester, I found myself naturally asking questions like "Is this accessible?" and "What biases might be hiding here?" I'm also way more comfortable diving into new tools and figuring things out as I go.</p>
-            
-            <p><strong>Looking ahead:</strong> I'm actually excited about applying these skills beyond the classroom. Being able to build websites, create clear data visualizations, and think critically about digital tools feels really practical for whatever comes next. The whole experience with AI tools prepared me for workplaces where this technology is already everywhere. I know how to use it as a helper without losing my own understanding. Plus, I've got this portfolio that shows what I can do and how I approach problems. Whether it's working with data, building digital projects, or just communicating ideas clearly, I feel like I've built a solid foundation this semester.</p>
-        </section>
     </main>
 
     <!-- Footer: Links and copyright -->
@@ -150,7 +158,7 @@
 
    
    
-   <!-- Dark Mode Toggle JavaScript -->\
+   <!-- Dark Mode Toggle JavaScript -->
 <!--I know this section below allows the user to click the dark mode toggle button and switch between light and dark mode.
 However, I am least familiar with javascript syntax and how it all works, so I don't completely
 understand everything about this code.-->
@@ -195,12 +203,14 @@ After switcihing, it saves the user’s choice in the browser’s memory so it c
 </script>
    
     <!-- Hamburger Menu JavaScript -->
+    <!-- This script handles the mobile menu toggle functionality -->
     <script>
         // Get the hamburger button and navigation menu
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.getElementById('nav-menu');
 
         // Toggle menu when hamburger is clicked
+        // This adds/removes 'active' class to show/hide the menu
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
